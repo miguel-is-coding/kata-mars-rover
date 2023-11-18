@@ -1,22 +1,21 @@
 package dev.kata.stringcalculator
 
-import org.assertj.core.api.Assertions.*
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.shouldBe
+import io.mockk.every
+import io.mockk.mockk
 import org.junit.jupiter.api.Test
-import org.mockito.kotlin.doThrow
-import org.mockito.kotlin.mock
 
 internal class StringCalculatorShould {
     @Test
     fun `throw not implemented`() {
+        val stringCalculatorDependency = mockk<StringCalculatorDependency>()
+        every { stringCalculatorDependency.doSomething() } throws NotImplementedError("Time to do some TDD...")
 
-        val dependencyMock = mock<StringCalculatorDependency> {
-            on { doSomething() }
-            doThrow(NotImplementedError("Time to do some TDD..."))
+        val exception = shouldThrow<NotImplementedError> {
+            StringCalculator(stringCalculatorDependency).execute()
         }
 
-        assertThatExceptionOfType(NotImplementedError::class.java)
-            .isThrownBy {
-                StringCalculator(dependencyMock).execute()
-            }.withMessage("Time to do some TDD...")
+        exception.message shouldBe "Time to do some TDD..."
     }
 }
