@@ -1,7 +1,8 @@
-package dev.kata.marsrover.infraestructure
+package marsrover.integration
 
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.shouldBe
+import marsrover.infrestructure.MarsRoverController
 
 class MarsRoverControllerShould : ShouldSpec({
     should("move to the front with one movement") {

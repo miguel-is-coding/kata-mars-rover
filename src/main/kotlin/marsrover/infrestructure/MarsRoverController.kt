@@ -1,4 +1,4 @@
-package dev.kata.marsrover.infraestructure
+package marsrover.infrestructure
 
 class MarsRoverController {
     fun execute(moveCommands: String): String {
