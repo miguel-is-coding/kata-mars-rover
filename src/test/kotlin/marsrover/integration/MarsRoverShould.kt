@@ -13,5 +13,9 @@ class MarsRoverShould : ShouldSpec({
         finalPosition shouldBe "1:1:N"
     }
 
+    should("face north at first instance") {
+        val marsRover = MarsRover()
 
+        marsRover.orientedTo shouldBe "N"
+    }
 })
