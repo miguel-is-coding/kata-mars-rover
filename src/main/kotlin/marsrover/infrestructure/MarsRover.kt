@@ -1,9 +1,21 @@
 package marsrover.infrestructure
 
 class MarsRover {
-    val orientedTo: String = "N"
+    var orientedTo: String = "N"
 
     fun move(moveCommands: String): String {
-        return "1:1:N"
+        for (movement in moveCommands) {
+            if (movement == 'L') {
+                orientedTo('W')
+            }
+            if (movement == 'R') {
+                orientedTo('E')
+            }
+        }
+        return "1:1:$orientedTo"
+    }
+
+    private fun orientedTo(orientation: Char) {
+        this.orientedTo = orientation.toString()
     }
 }
