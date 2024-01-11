@@ -10,7 +10,7 @@ class MarsRover {
                 'R' -> orientedTo('E')
             }
         }
-        return "1:1:$orientedTo"
+        return "0:0:$orientedTo"
     }
 
     private fun orientedTo(orientation: Char) {
