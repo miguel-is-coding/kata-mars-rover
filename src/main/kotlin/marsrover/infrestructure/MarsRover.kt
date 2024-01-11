@@ -5,11 +5,9 @@ class MarsRover {
 
     fun move(moveCommands: String): String {
         for (movement in moveCommands) {
-            if (movement == 'L') {
-                orientedTo('W')
-            }
-            if (movement == 'R') {
-                orientedTo('E')
+            when (movement){
+                'L' -> orientedTo('W')
+                'R' -> orientedTo('E')
             }
         }
         return "1:1:$orientedTo"
